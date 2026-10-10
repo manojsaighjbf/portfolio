@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>B. Manojsai — Python Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5fc;--card:#fff;--ink:#1a1633;--mute:#655f85;--line:#e0dcf2;--acc:#5b4bdb;--acc2:#ff7a59;--accsoft:#ebe8fb;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12102a;--card:#1b1838;--ink:#ece9ff;--mute:#aaa5cf;--line:#2e2a57;--acc:#a99bff;--acc2:#ff9a7a;--accsoft:#26224d}}
+:root[data-theme="dark"]{--bg:#12102a;--card:#1b1838;--ink:#ece9ff;--mute:#aaa5cf;--line:#2e2a57;--acc:#a99bff;--acc2:#ff9a7a;--accsoft:#26224d}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 Figtree,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:88px 0}
+h2{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;margin-bottom:12px}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 36px}
+/* nav */
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.2rem 'Bricolage Grotesque',sans-serif;text-decoration:none}
+.logo b{color:var(--acc)}
+.links{display:flex;gap:4px}
+.links a{text-decoration:none;font-weight:500;font-size:.93rem;padding:8px 12px;border-radius:8px;color:var(--mute);transition:.2s}
+.links a:hover,.links a.on{color:var(--acc);background:var(--accsoft)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:42px;height:42px;color:var(--ink);font-size:1.3rem;cursor:pointer}
+@media(max-width:860px){.burger{display:block}.links{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 22px 16px;display:none}.links.open{display:flex}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--acc);cursor:pointer;font-family:inherit;font-size:1rem;transition:transform .2s,background .2s}
+.btn.p{background:var(--acc);color:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.p{color:#14102e}}
+.btn.s{background:transparent;color:var(--acc)}
+.btn:hover{transform:translateY(-2px)}
+/* hero */
+#home{min-height:100vh;display:flex;align-items:center;padding:110px 0 60px;position:relative;overflow:hidden}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,7vw,4.7rem);font-weight:800;letter-spacing:-.02em}
+.role{font:600 1.3rem 'Bricolage Grotesque',sans-serif;color:var(--acc);margin:16px 0 18px;min-height:1.8em}
+.role::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--acc2);margin-left:4px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p{color:var(--mute);max-width:52ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.avatar{position:relative;width:min(300px,70vw);aspect-ratio:1;margin:auto}
+.avatar .ring{position:absolute;inset:-14px;border-radius:50%;border:2px dashed var(--acc);animation:spin 28s linear infinite}
+.avatar .pic{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,var(--acc),#3a2da8);display:grid;place-items:center;color:#fff;font:800 5rem 'Bricolage Grotesque',sans-serif;overflow:hidden;box-shadow:0 20px 50px rgba(91,75,219,.3);animation:float 5s ease-in-out infinite}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.chip{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:.82rem;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.chip.a{top:6%;right:-6%;animation:float 4s ease-in-out infinite}
+.chip.b{bottom:8%;left:-8%;animation:float 4.6s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.trace{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.trace path{fill:none;stroke:var(--acc);stroke-width:1.5;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 5s ease forwards}
+.trace circle{fill:var(--acc2);opacity:0;animation:pop .4s 3.5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+@media(max-width:860px){.hero{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.cta{justify-content:center}.avatar{order:-1;width:min(220px,60vw)}.chip{display:none}}
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(91,75,219,.12)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g2,.g3{grid-template-columns:1fr}}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:760px){.about{grid-template-columns:1fr}}
+.facts{display:grid;gap:14px}
+.fact{display:flex;gap:14px;align-items:center}
+.fact i{font-style:normal;width:42px;height:42px;border-radius:10px;background:var(--accsoft);display:grid;place-items:center;font-size:1.2rem;flex:none}
+.fact small{display:block;color:var(--mute)}
+/* skills */
+.skill{margin-bottom:18px}
+.skill div{display:flex;justify-content:space-between;font-weight:600;margin-bottom:6px}
+.bar{height:9px;background:var(--accsoft);border-radius:9px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:9px;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+/* timeline */
+.tl{border-left:2px solid var(--line);margin-left:8px;padding-left:28px;display:grid;gap:22px}
+.tl .card{position:relative}
+.tl .card::before{content:"";position:absolute;left:-37px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--acc2);border:3px solid var(--bg)}
+.tag{display:inline-block;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accsoft);color:var(--acc);margin:0 6px 6px 0}
+.card h3{font-size:1.25rem;margin-bottom:8px}
+.card p{margin:0 0 12px;color:var(--mute)}
+.ico{font-size:2rem;margin-bottom:10px}
+.cert{display:flex;gap:18px;align-items:center}
+/* resume */
+.res{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+@media(max-width:640px){.res{grid-template-columns:1fr}}
+/* contact */
+.contact{max-width:640px;margin:0 auto}
+.crow{display:flex;align-items:center;gap:16px;padding:20px;text-decoration:none}
+.crow i{font-style:normal;width:52px;height:52px;border-radius:14px;background:var(--accsoft);display:grid;place-items:center;font-size:1.5rem;flex:none}
+.crow small{color:var(--mute);display:block}
+.crow strong{font-size:1.15rem;word-break:break-word}
+footer{text-align:center;padding:28px 22px;color:var(--mute);border-top:1px solid var(--line);font-size:.9rem}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.trace path{stroke-dashoffset:0}.trace circle{opacity:1}}
+@media print{nav,.cta,.noprint{display:none}section{padding:20px 0}.rv{opacity:1;transform:none}}
+
+body{background:radial-gradient(900px 600px at 8% -5%,color-mix(in srgb,var(--acc) 16%,transparent),transparent 60%),radial-gradient(800px 600px at 100% 30%,color-mix(in srgb,var(--acc2) 14%,transparent),transparent 60%),var(--bg);background-attachment:fixed}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));z-index:30}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none;animation:float 9s ease-in-out infinite}
+.o1{width:320px;height:320px;background:var(--acc);top:8%;left:-80px}
+.o2{width:260px;height:260px;background:var(--acc2);bottom:6%;right:5%;animation-delay:-4s}
+.hero h1{background:linear-gradient(120deg,var(--ink) 30%,var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+.avatar .pic{background:var(--card);padding:0;border:6px solid var(--card);box-shadow:0 0 0 2px var(--acc),0 30px 70px rgba(91,75,219,.35)}
+.avatar .pic img{object-position:center 18%;border-radius:50%}
+.avatar .ring{inset:-18px;border-color:var(--acc2)}
+.avatar::before{content:"";position:absolute;inset:-34px;border-radius:50%;border:1px solid var(--acc);opacity:.35;animation:spin 40s linear infinite reverse}
+.chip{backdrop-filter:blur(8px)}
+section[style]{background:color-mix(in srgb,var(--card) 55%,transparent)!important}
+h2::after{content:"";display:block;width:56px;height:4px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.contact h2::after{margin-left:auto;margin-right:auto}
+.card{background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(10px);position:relative}
+.card:hover{border-color:var(--acc);box-shadow:0 20px 44px rgba(91,75,219,.18)}
+.ico{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--accsoft),color-mix(in srgb,var(--acc2) 30%,transparent));display:grid;place-items:center;font-size:1.7rem}
+.cert .ico{flex:none}
+.tag{border:1px solid color-mix(in srgb,var(--acc) 30%,transparent)}
+.btn.p{background:linear-gradient(120deg,var(--acc),color-mix(in srgb,var(--acc) 60%,var(--acc2)));border-color:transparent;box-shadow:0 10px 24px rgba(91,75,219,.3)}
+.logo b{color:var(--acc2)}
+
+.rcv{padding:0;overflow:hidden}
+.rcv:hover{transform:none}
+.rhead{padding:28px 30px;background:linear-gradient(120deg,var(--acc),color-mix(in srgb,var(--acc) 55%,var(--acc2)));color:#fff;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.rhead h3{font-size:1.7rem;color:#fff}.rhead p{margin:4px 0 0;color:#ffffffd9}
+.rhead .btn{background:#fff;color:#3a2da8;border-color:#fff}
+.rcols{display:grid;grid-template-columns:.8fr 1.2fr}
+.rcols>div{padding:28px 30px}
+.rcols>div:first-child{background:var(--accsoft);border-right:1px solid var(--line)}
+.rcols h4{font:700 1.05rem 'Bricolage Grotesque',sans-serif;margin:0 0 10px;color:var(--acc);padding-bottom:6px;border-bottom:2px solid var(--line)}
+.rcols section,.rcols .blk{padding:0;margin-bottom:24px}
+.rcols .blk p{margin:0 0 6px;color:var(--ink);font-size:.95rem}
+.rcols .blk small{color:var(--mute)}
+@media(max-width:700px){.rcols{grid-template-columns:1fr}.rcols>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav><div class="wrap">
+<a class="logo" href="#home">Manojsai<b>.</b></a>
+<button class="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+<div class="links">
+<a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#certifications">Certifications</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+</div></div></nav>
+
+<section id="home">
+<i class="orb o1"></i><i class="orb o2"></i>
+<svg class="trace" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path d="M0 120H220L270 170H520L560 130H800"/><path d="M1200 560H940L890 510H700L660 550H420"/><path d="M0 600H160L210 550H330"/><path d="M1200 90H1010L970 130H860"/>
+<circle cx="800" cy="130" r="6"/><circle cx="420" cy="550" r="6"/><circle cx="330" cy="550" r="6"/><circle cx="860" cy="130" r="6"/>
+</svg>
+<div class="wrap hero">
+<div>
+<p style="margin:0 0 8px;font-weight:600;color:var(--mute)">Hi, I'm</p>
+<h1>B. Manojsai</h1>
+<div class="role" id="role" aria-label="Aspiring Python Developer"></div>
+<p>B.Tech ECE student at SR University. I build practical software with Python and the web, and I enjoy connecting code with real hardware.</p>
+<div class="cta"><a class="btn p" href="#projects">View projects</a><a class="btn s" href="#contact">Contact me</a></div>
+</div>
+<div class="avatar">
+<div class="ring"></div>
+<div class="pic"><img src="mypic.JPG" alt="Portrait of B. Manojsai" width="520" height="520"></div>
+<span class="chip a">🐍 Python</span><span class="chip b">🔌 ECE</span>
+</div>
+</div>
+</section>
+
+<section id="about"><div class="wrap">
+<h2 class="rv">About me</h2>
+<div class="about rv">
+<div>
+<p>I'm an Electronics and Communication Engineering student with a clear goal: to become a Python developer. I started with Python, then added HTML, CSS, JavaScript, React and SQL so I can build complete applications from database to screen.</p>
+<p>My ECE background gives me an edge in understanding how software meets hardware. I learn fast, like finishing what I start, and I'm looking for an internship or entry-level role where I can grow.</p>
+</div>
+<div class="facts">
+<div class="fact"><i>🎓</i><div><small>Degree</small><strong>B.Tech, ECE</strong></div></div>
+<div class="fact"><i>🏫</i><div><small>College</small><strong>SR University</strong></div></div>
+<div class="fact"><i>🎯</i><div><small>Career goal</small><strong>Python Developer</strong></div></div>
+</div></div>
+</div></section>
+
+<section id="skills" style="background:var(--card)"><div class="wrap">
+<h2 class="rv">Skills</h2>
+<p class="lead rv">Tools I use to build and ship projects.</p>
+<div class="grid g2 rv" id="skillgrid"></div>
+</div></section>
+
+<section id="education"><div class="wrap">
+<h2 class="rv">Education</h2>
+<p class="lead rv">Where I'm studying now.</p>
+<div class="tl rv"><div class="card">
+<span class="tag">Pursuing</span>
+<h3>B.Tech in Electronics &amp; Communication Engineering</h3>
+<p>SR University</p>
+<span class="tag">Electronics</span><span class="tag">Embedded basics</span><span class="tag">Programming</span>
+</div></div>
+</div></section>
+
+<section id="projects" style="background:var(--card)"><div class="wrap">
+<h2 class="rv">Projects</h2>
+<p class="lead rv">Two projects that show both sides of my learning: software and hardware.</p>
+<div class="grid g2">
+<article class="card rv"><div class="ico">🗂️</div><h3>Student Record Management System</h3>
+<p>An application to add, search, update and delete student records, with data stored in a database.</p>
+<span class="tag">Python</span><span class="tag">SQL</span></article>
+<article class="card rv"><div class="ico">🚗</div><h3>Bluetooth Controlled Robotic Car</h3>
+<p>A robotic car driven wirelessly from a phone over Bluetooth, combining electronics, motor control and code.</p>
+<span class="tag">Electronics</span><span class="tag">Bluetooth</span><span class="tag">Embedded</span></article>
+</div></div></section>
+
+<section id="certifications"><div class="wrap">
+<h2 class="rv">Certifications</h2>
+<div class="card cert rv"><div class="ico" style="margin:0">🏅</div><div><h3 style="margin-bottom:4px">Python 100 Days Workshop</h3><p style="margin:0">Hands-on workshop covering Python from basics to project building.</p></div></div>
+</div></section>
+
+<section id="resume" style="background:var(--card)"><div class="wrap">
+<h2 class="rv">Resume</h2>
+<div class="card rcv rv">
+<div class="rhead"><div><h3>B. Manojsai</h3><p>Python Developer (Fresher) · B.Tech ECE, SR University</p></div><button class="btn noprint" onclick="window.print()">Save as PDF</button></div>
+<div class="rcols">
+<div>
+<div class="blk"><h4>Contact</h4><p>+91 93987 61610</p><small>WhatsApp / Phone</small></div>
+<div class="blk"><h4>Skills</h4><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">SQL</span></div>
+<div class="blk"><h4>Certifications</h4><p>Python 100 Days Workshop</p></div>
+</div>
+<div>
+<div class="blk"><h4>Career objective</h4><p>Fresher seeking a Python Developer role to apply programming and electronics knowledge on real projects.</p></div>
+<div class="blk"><h4>Education</h4><p><strong>B.Tech, Electronics &amp; Communication Engineering</strong></p><small>SR University</small></div>
+<div class="blk"><h4>Projects</h4><p><strong>Student Record Management System</strong><br><small>Python, SQL</small></p><p><strong>Bluetooth Controlled Robotic Car</strong><br><small>Electronics, Bluetooth, Embedded</small></p></div>
+</div>
+</div></div></div></section>
+
+<section id="contact"><div class="wrap">
+<div class="contact">
+<h2 class="rv" style="text-align:center">Contact</h2>
+<p class="lead rv" style="text-align:center;margin-left:auto;margin-right:auto">Open to internships and entry-level Python roles. Message me on WhatsApp.</p>
+<a class="card crow rv" href="https://wa.me/919398761610" target="_blank" rel="noopener"><i>💬</i><div><small>WhatsApp</small><strong>+91 93987 61610</strong></div></a>
+<a class="card crow rv" href="tel:+919398761610" style="margin-top:16px"><i>📞</i><div><small>Phone</small><strong>+91 93987 61610</strong></div></a>
+</div></div></section>
+
+<footer>© <span id="yr"></span> B. Manojsai · B.Tech ECE, SR University</footer>
+
+<script>
+var skills=[["Python",85],["HTML",85],["CSS",80],["JavaScript",70],["React",65],["SQL",75]];
+document.getElementById('skillgrid').innerHTML=skills.map(function(s){return '<div class="skill"><div><span>'+s[0]+'</span><span>'+s[1]+'%</span></div><div class="bar"><span data-w="'+s[1]+'"></span></div></div>'}).join('');
+document.getElementById('yr').textContent=new Date().getFullYear();
+var b=document.querySelector('.burger'),l=document.querySelector('.links');
+b.onclick=function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)};
+l.onclick=function(){l.classList.remove('open');b.setAttribute('aria-expanded',false)};
+var role=document.getElementById('role'),txt='Aspiring Python Developer',i=0;
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){role.textContent=txt}else{(function t(){role.textContent=txt.slice(0,i++);if(i<=txt.length)setTimeout(t,70)})()}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.bar span').forEach(function(s){s.style.width=s.dataset.w+'%'});io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(e,n){e.style.transitionDelay=(n%3)*90+'ms';io.observe(e)});
+var secs=document.querySelectorAll('section'),as=document.querySelectorAll('.links a');
+addEventListener('scroll',function(){var c='';secs.forEach(function(s){if(scrollY>=s.offsetTop-120)c=s.id});as.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c)})},{passive:true});
+var pg=document.getElementById('prog');addEventListener('scroll',function(){pg.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+</script>
+</body>
+</html>
